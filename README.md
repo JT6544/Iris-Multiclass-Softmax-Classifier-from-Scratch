@@ -104,9 +104,9 @@ The test observations are not used to select the learning rate, decide whether t
 
 For a feature $x_j$, standardisation uses
 
-$$
+```math
 x'_j=\frac{x_j-\mu_j}{\sigma_j}.
-$$
+```
 
 During cross-validation, $\mu_j$ and $\sigma_j$ are calculated from the training portion of the current fold and then applied to its validation portion.
 
@@ -116,54 +116,54 @@ After configuration selection, a new scaler is fitted using all 120 development 
 
 For observation $i$, the model calculates one score for each class:
 
-$$
+```math
 \mathbf{z}_i=\tilde{\mathbf{x}}_i^T\mathbf{W},
-$$
+```
 
 where $\tilde{\mathbf{x}}_i$ contains a leading bias value and $\mathbf{W}$ is the weight matrix.
 
 The probability assigned to class $k$ is
 
-$$
+```math
 p_{ik}
 =
 \frac{\exp(z_{ik}-m_i)}
 {\sum_c\exp(z_{ic}-m_i)},
 \qquad
 m_i=\max_c z_{ic}.
-$$
+```
 
 Subtracting the maximum score before exponentiation makes the softmax calculation numerically stable.
 
 The predicted class is
 
-$$
-\hat{y}_i=\operatorname*{arg\,max}_k p_{ik}.
-$$
+```math
+\hat{y}_i=\mathrm{arg\,max}_k p_{ik}.
+```
 
 ## Loss and Regularisation
 
 Training minimises mean multiclass cross-entropy with an L2 penalty:
 
-$$
+```math
 J(\mathbf{W})
 =
 -\frac{1}{n}\sum_{i=1}^{n}\log p_{i,y_i}
 +
 \frac{\lambda}{2}\left\|\mathbf{W}_{\mathrm{nonbias}}\right\|_F^2.
-$$
+```
 
 The bias row is excluded from regularisation.
 
 With a one-hot target matrix $\mathbf{Y}$ and probability matrix $\mathbf{P}$, the gradient is
 
-$$
+```math
 \nabla J(\mathbf{W})
 =
 \frac{1}{n}\tilde{\mathbf{X}}^T(\mathbf{P}-\mathbf{Y})
 +
 \lambda\mathbf{W}_{\mathrm{nonbias}}.
-$$
+```
 
 The implementation uses the same value of $\lambda$ in the loss and gradient. A finite-difference unit test checks the analytical gradient, including the L2 term.
 
@@ -171,13 +171,13 @@ The implementation uses the same value of $\lambda$ in the loss and gradient. A 
 
 Weights are initialised to zero and updated using full-batch gradient descent:
 
-$$
+```math
 \mathbf{W}^{(t+1)}
 =
 \mathbf{W}^{(t)}
 -
 \eta\nabla J\!\left(\mathbf{W}^{(t)}\right),
-$$
+```
 
 where $\eta$ is the learning rate.
 
