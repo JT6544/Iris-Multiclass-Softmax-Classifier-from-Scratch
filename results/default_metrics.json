@@ -1,0 +1,161 @@
+{
+  "dataset": {
+    "source": "UCI Iris, corrected Bezdek data file",
+    "observations": 150,
+    "features": [
+      "sepal_length_cm",
+      "sepal_width_cm",
+      "petal_length_cm",
+      "petal_width_cm"
+    ],
+    "units": "centimetres",
+    "class_counts": {
+      "Iris-setosa": 50,
+      "Iris-versicolor": 50,
+      "Iris-virginica": 50
+    },
+    "unique_record_groups": 149
+  },
+  "config": {
+    "seed": 42,
+    "test_fraction": 0.2,
+    "folds": 5,
+    "max_iterations": 5000,
+    "patience": 300,
+    "min_delta": 1e-07,
+    "l2_strength": 0.001
+  },
+  "split_sizes": {
+    "development": 120,
+    "test": 30
+  },
+  "selected_candidate": {
+    "normalize": true,
+    "learning_rate": 0.1,
+    "l2_strength": 0.001,
+    "name": "standardized_lr-0.1_l2-0.001"
+  },
+  "final_iterations": 5000,
+  "cross_validation_summary": {
+    "unscaled_lr-0.001_l2-0.001": {
+      "mean_macro_f1": 0.91384998443822,
+      "std_macro_f1": 0.049656070000922585,
+      "mean_accuracy": 0.9166666666666667,
+      "mean_validation_loss": 0.4527057654897046,
+      "median_best_iteration": 5000.0
+    },
+    "unscaled_lr-0.1_l2-0.001": {
+      "mean_macro_f1": 0.958169934640523,
+      "std_macro_f1": 0.04582254075860213,
+      "mean_accuracy": 0.9583333333333334,
+      "mean_validation_loss": 0.13698832531031674,
+      "median_best_iteration": 5000.0
+    },
+    "standardized_lr-0.001_l2-0.001": {
+      "mean_macro_f1": 0.8358169934640524,
+      "std_macro_f1": 0.05509831057702268,
+      "mean_accuracy": 0.8416666666666668,
+      "mean_validation_loss": 0.4091773190472946,
+      "median_best_iteration": 5000.0
+    },
+    "standardized_lr-0.1_l2-0.001": {
+      "mean_macro_f1": 0.958169934640523,
+      "std_macro_f1": 0.04582254075860213,
+      "mean_accuracy": 0.9583333333333334,
+      "mean_validation_loss": 0.12644726397818212,
+      "median_best_iteration": 5000.0
+    }
+  },
+  "metrics": {
+    "development": {
+      "observations": 120,
+      "confusion_matrix": [
+        [
+          40,
+          0,
+          0
+        ],
+        [
+          0,
+          37,
+          3
+        ],
+        [
+          0,
+          1,
+          39
+        ]
+      ],
+      "accuracy": 0.9666666666666667,
+      "macro_precision": 0.967418546365915,
+      "macro_recall": 0.9666666666666667,
+      "macro_f1": 0.966645820304357,
+      "balanced_accuracy": 0.9666666666666667,
+      "per_class": {
+        "Iris-setosa": {
+          "support": 40,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "Iris-versicolor": {
+          "support": 40,
+          "precision": 0.9736842105263158,
+          "recall": 0.925,
+          "f1": 0.9487179487179489
+        },
+        "Iris-virginica": {
+          "support": 40,
+          "precision": 0.9285714285714286,
+          "recall": 0.975,
+          "f1": 0.951219512195122
+        }
+      }
+    },
+    "test": {
+      "observations": 30,
+      "confusion_matrix": [
+        [
+          10,
+          0,
+          0
+        ],
+        [
+          0,
+          10,
+          0
+        ],
+        [
+          0,
+          0,
+          10
+        ]
+      ],
+      "accuracy": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "macro_f1": 1.0,
+      "balanced_accuracy": 1.0,
+      "per_class": {
+        "Iris-setosa": {
+          "support": 10,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "Iris-versicolor": {
+          "support": 10,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "Iris-virginica": {
+          "support": 10,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      }
+    }
+  }
+}
